@@ -1,0 +1,23 @@
+.search-results {
+    flex: 3;
+    padding: 3rem;
+}
+
+.search-results h1 {
+
+}
+
+.word-title-svg-wrapper {
+    margin-bottom: 1rem;
+}
+
+.search-results div + h3 {
+    color: #415361;
+    margin-bottom: 0.8rem;
+}
+
+.search-results svg {
+    width: 1.6rem;
+    height: 1.6rem;
+    color: #121C24;
+}

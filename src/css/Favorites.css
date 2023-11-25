@@ -1,0 +1,36 @@
+ul {
+    list-style-type: none;
+}
+
+.favorites-list {
+    flex: 1.5;
+    padding: 3rem;
+    border-right: 2px solid #C8C8C8;
+}
+
+.favorites-list h3 {
+    color: #121C24;
+    font-size: 1.5rem;
+    margin-bottom: 0.8rem;
+}
+
+svg {
+    width: 1rem;
+    height: 1rem;
+    color: #EFD24C;
+}
+
+li {
+    font-size: 18px;
+}
+
+.favorite-word-wrapper {
+    padding: 0.5rem 1rem 0.5rem 1rem;
+}
+
+.favorite-word-wrapper:hover {
+    background-color: #C8C8C8;
+    color: #121C24;
+    cursor: pointer;
+    border-radius: 5px;
+}
