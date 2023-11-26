@@ -1,8 +1,44 @@
 input {
-    width: 90%;
-    padding: 1rem;
-    margin: 8px 0;
-    border-radius: 50px;
-    border: none;
-    background-color: #FFF9F2;
+  flex: 8;
+  width: 80%;
+  padding: 0.6rem;
+  margin: 8px 0 8px 8px;
+  border: none;
+  background-color: #fff9f2;
+}
+
+input:focus {
+  outline: none;
+  border: none;
+}
+
+input:focus::placeholder {
+  color: transparent;
+}
+
+.search-button {
+  flex: 1;
+  background-color: #efd24c;
+  border-radius: 0px 50px 50px 0px;
+  color: white;
+  border: none;
+  min-width: 5rem;
+}
+
+.search-button:hover {
+  cursor: pointer;
+}
+
+.input-container {
+  display: flex;
+  margin: 0 auto;
+  width: 90%;
+  border-radius: 50px;
+  background-color: #fff9f2;
+}
+
+.svg-search {
+  width: 1.2rem;
+  height: 1.2rem;
+  color: #fff9f2;
 }
