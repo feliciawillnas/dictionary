@@ -1,19 +1,20 @@
 .search-results {
   flex: 3;
-  height: 50vh;
+  height: auto;
+  color: #121c24;
 }
 
-.padding {
-  padding: 3rem;
+.search-results-wrapper {
+  padding: 3rem 3rem 2rem 3rem;
 }
 
-.word-title-svg-wrapper {
-  margin-bottom: 1rem;
+.title-wrapper {
+  margin-bottom: 0.5rem;
 }
 
-.search-results div + h4 {
-  color: #415361;
-  margin-bottom: 0.8rem;
+.title-wrapper h1 {
+  font-size: 2.8rem;
+  font-weight: 800;
 }
 
 .search-results svg {
@@ -22,7 +23,46 @@
   color: #121c24;
 }
 
-.svg-wrapper:hover {
+.search-results svg:hover {
   background-color: rgb(189, 189, 189);
   border-radius: 50%;
+}
+
+.meaning-wrapper {
+  margin-bottom: 4rem;
+}
+
+.meaning-wrapper h3 {
+  color: #505050;
+  margin-top: 2rem;
+}
+
+.definition {
+  padding: 0rem 1rem 0rem 1rem;
+}
+
+.audio-player {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  font-size: 1.3rem;
+}
+
+.audio-player svg {
+  width: 1.3rem;
+  height: 1.3rem;
+  margin-right: 1rem;
+}
+
+.search-results h2 {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.search-results li {
+  list-style: inside;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  font-weight: 800;
 }

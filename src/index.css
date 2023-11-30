@@ -1,11 +1,10 @@
 :root {
-  background-color: #3B84AB;
+  background-color: #3b84ab;
 }
 
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  font-family: 'Averia Libre', cursive;
+  font-family: "Averia Libre", cursive;
 }
-
