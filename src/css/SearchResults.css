@@ -66,3 +66,17 @@
   margin-bottom: 1rem;
   font-weight: 800;
 }
+
+.center {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  color: grey;
+}
+
+.center svg {
+  height: 0.8rem;
+  width: 0.8rem;
+  margin-left: 0.5rem;
+  color: grey;
+}
