@@ -10,12 +10,15 @@ function Search({ onSearchResults }) {
       handleError();
     } else {
       handleInputChange();
+      clearInput();
     }
   };
 
-  const handleInputChange = async () => {
-    console.log(searchTerm);
+  const clearInput = () => {
+    setSearchTerm("");
+  };
 
+  const handleInputChange = async () => {
     try {
       const response = await fetch(
         `https://api.dictionaryapi.dev/api/v2/entries/en/${searchTerm}`

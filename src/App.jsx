@@ -6,9 +6,14 @@ import SearchResults from "./components/SearchResults";
 
 function App() {
   const [searchResults, setSearchResults] = useState([]);
+  const [favorites, setFavoriteList] = useState([]);
 
   const handleSearchResults = (data) => {
     setSearchResults(data);
+  };
+
+  const handleFavoritesResults = (data) => {
+    setFavoriteList(data);
   };
   return (
     <>
@@ -17,8 +22,11 @@ function App() {
         <Search onSearchResults={handleSearchResults} />
       </header>
       <main>
-        <Favorites />
-        <SearchResults searchResults={searchResults} />
+        <Favorites favorites={favorites} />
+        <SearchResults
+          onFavoritesResults={handleFavoritesResults}
+          searchResults={searchResults}
+        />
       </main>
     </>
   );

@@ -1,11 +1,18 @@
 import React, { useState } from "react";
 import "../css/SearchResults.css";
 
-export default function SearchResults({ searchResults }) {
+export default function SearchResults({ searchResults, onFavoritesResults }) {
   const [isShowingMore, setIsShowingMore] = useState(false);
+  const [favorites, setFavorites] = useState([]);
 
   const handleToggle = () => {
     setIsShowingMore(!isShowingMore);
+  };
+
+  const addToFavorite = (favorite) => {
+    setFavorites([...favorites, favorite]);
+    onFavoritesResults(favorites);
+    console.log(favorites);
   };
 
   return (
@@ -23,7 +30,9 @@ export default function SearchResults({ searchResults }) {
 
                   {index === 0 && (
                     <>
+                      {/* STAR SVG */}
                       <svg
+                        onClick={() => addToFavorite(result.word)}
                         className="w-6 h-6 text-gray-800 dark:text-white"
                         aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg"
@@ -46,8 +55,9 @@ export default function SearchResults({ searchResults }) {
                   <>
                     <div className="center" onClick={handleToggle}>
                       Show more
+                      {/* PLUS SVG */}
                       <svg
-                        class="w-6 h-6 text-gray-800 dark:text-white"
+                        className="w-6 h-6 text-gray-800 dark:text-white"
                         aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg"
                         fill="currentColor"
@@ -73,6 +83,7 @@ export default function SearchResults({ searchResults }) {
                             ) : (
                               <>
                                 {result.phonetics[index].audio}
+                                {/* AUDIO SVG */}
                                 <svg
                                   className="w-6 h-6 text-gray-800 dark:text-white"
                                   aria-hidden="true"
