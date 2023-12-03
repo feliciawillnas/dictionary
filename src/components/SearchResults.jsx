@@ -14,6 +14,7 @@ export default function SearchResults({ searchResults, onFavoritesResults }) {
     <>
       <div className="search-results">
         <div className="search-results-wrapper">
+          {/* Renders either a message encouraging the user to search for a word, or renders the result of the searched word */}
           {searchResults.length === 0 ? (
             <p>Please search for a word</p>
           ) : (
@@ -46,24 +47,6 @@ export default function SearchResults({ searchResults, onFavoritesResults }) {
                   )}
                 </div>
 
-                {index === 1 && (
-                  <>
-                    <div className="center">
-                      Show more
-                      {/* PLUS SVG */}
-                      <svg
-                        className="w-6 h-6 text-gray-800 dark:text-white"
-                        aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                      >
-                        <path d="M9.546.5a9.5 9.5 0 1 0 9.5 9.5 9.51 9.51 0 0 0-9.5-9.5ZM13.788 11h-3.242v3.242a1 1 0 1 1-2 0V11H5.304a1 1 0 0 1 0-2h3.242V5.758a1 1 0 0 1 2 0V9h3.242a1 1 0 1 1 0 2Z" />
-                      </svg>
-                    </div>
-                  </>
-                )}
-
                 <>
                   {/* AUDIO AND PHONETICS */}
                   {result.phonetics[index] && (
@@ -74,17 +57,14 @@ export default function SearchResults({ searchResults, onFavoritesResults }) {
                             <></>
                           ) : (
                             <>
-                              {result.phonetics[index].audio}
+                              {/* {result.phonetics[index].audio} */}
                               {/* AUDIO SVG */}
-                              <svg
-                                className="w-6 h-6 text-gray-800 dark:text-white"
-                                aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="currentColor"
-                                viewBox="0 0 20 18"
-                              >
-                                <path d="M10.836.357a1.978 1.978 0 0 0-2.138.3L3.63 5H2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h1.63l5.07 4.344a1.985 1.985 0 0 0 2.142.299A1.98 1.98 0 0 0 12 15.826V2.174A1.98 1.98 0 0 0 10.836.357Zm2.728 4.695a1.001 1.001 0 0 0-.29 1.385 4.887 4.887 0 0 1 0 5.126 1 1 0 0 0 1.674 1.095A6.645 6.645 0 0 0 16 9a6.65 6.65 0 0 0-1.052-3.658 1 1 0 0 0-1.384-.29Zm4.441-2.904a1 1 0 0 0-1.664 1.11A10.429 10.429 0 0 1 18 9a10.465 10.465 0 0 1-1.614 5.675 1 1 0 1 0 1.674 1.095A12.325 12.325 0 0 0 20 9a12.457 12.457 0 0 0-1.995-6.852Z" />
-                              </svg>
+                              <audio controls aria-label="audio-player">
+                                <source
+                                  src={result.phonetics[0].audio}
+                                  type="audio/mpeg"
+                                />
+                              </audio>
                             </>
                           )}
                         </p>
@@ -124,6 +104,7 @@ export default function SearchResults({ searchResults, onFavoritesResults }) {
                             )
                           )}
 
+                          {/* SYNONYMS */}
                           {meaning.synonyms.length === 0 ? (
                             <p></p>
                           ) : (

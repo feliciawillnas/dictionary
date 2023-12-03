@@ -6,6 +6,9 @@ function Search({ onSearchResults }) {
   const [isErrorVisible, setIsErrorVisible] = useState(false);
   const [errorStatus, setErrorStatus] = useState("");
 
+  // handleSearch is called when the user clicks the search button.
+  // It checks if the input field is empty. If it is, it displays an error message.
+  // If it is not, it calls handleInputChange.
   const handleSearch = () => {
     if (searchTerm === "") {
       handleError("Please enter a valid word");
@@ -15,11 +18,13 @@ function Search({ onSearchResults }) {
     }
   };
 
+  // Clears the input field and hides the error message.
   const clearInput = () => {
     setSearchTerm("");
     setIsErrorVisible(false);
   };
 
+  // handleInputChange is called when the user clicks the search button. And handles the API call.
   const handleInputChange = async () => {
     try {
       const response = await fetch(
@@ -30,6 +35,7 @@ function Search({ onSearchResults }) {
         const data = await response.json();
         setSearchResults(data);
         onSearchResults(data);
+        clearInput();
       } else {
         throw new Error("Something went wrong");
       }
@@ -38,6 +44,7 @@ function Search({ onSearchResults }) {
     }
   };
 
+  // handleError is called when the API call fails.
   const handleError = (error) => {
     if (error.message === "Something went wrong") {
       setErrorStatus(
@@ -55,38 +62,40 @@ function Search({ onSearchResults }) {
 
   return (
     <>
-      <div className="input-container">
-        <input
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          placeholder="Search"
-          type="text"
-        />
-        <button
-          onClick={handleSearch}
-          className="search-button"
-          aria-label="search"
-        >
-          <svg
-            className="w-6 h-6 text-gray-800 dark:text-white svg-search"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 20 20"
+      <div className="input-container-error-message">
+        <div className="input-container">
+          <input
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            placeholder="Search"
+            type="text"
+          />
+          <button
+            onClick={handleSearch}
+            className="search-button"
+            aria-label="search"
           >
-            <path
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-            />
-          </svg>
-        </button>
+            <svg
+              className="w-6 h-6 text-gray-800 dark:text-white svg-search"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 20 20"
+            >
+              <path
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+              />
+            </svg>
+          </button>
+        </div>
+        {isErrorVisible && (
+          <div className="error-message">Please enter a valid word</div>
+        )}
       </div>
-      {isErrorVisible && (
-        <div className="error-message">Please enter a valid word</div>
-      )}
     </>
   );
 }

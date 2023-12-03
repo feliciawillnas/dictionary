@@ -30,11 +30,14 @@ input:focus::placeholder {
 }
 
 .input-container {
-  display: flex;
-  margin: 0 auto;
-  width: 90%;
   border-radius: 50px;
+  display: flex;
   background-color: #fff9f2;
+}
+
+.input-container-error-message {
+  width: 85%;
+  margin: 0 auto;
 }
 
 .svg-search {
@@ -44,8 +47,14 @@ input:focus::placeholder {
 }
 
 .error-message {
-  flex: 1;
-  border-radius: 5px;
-  background-color: white;
+  border-radius: 50px;
+  background-color: #ffeeed;
   width: fit-content;
+  padding: 0.5rem 1rem;
+  color: red;
+  font-size: 12px;
+  width: 99%;
+  margin: 0 auto;
+  text-align: left;
+  margin-top: 0.2rem;
 }

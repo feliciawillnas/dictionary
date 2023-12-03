@@ -8,17 +8,16 @@ export default function Favorites({ favorites }) {
         <h3>Favorites</h3>
         <ul>
           <div className="flex favorite-word-wrapper">
-            {favorites === 0 ? (
+            {/*  Either renders a message encouraging the user to add a favorite word or renders the users favorite words */}
+            {favorites.length === 0 ? (
               <>Please add a favorite word</>
             ) : (
               <>
                 {favorites.map((favorite, index) => (
                   <>
-                    <div key={index}>
+                    <div key={index} className="favorites-wrapper">
                       <div className="favorite-word-svg-wrapper">
-                        <ul>
-                          <li>{favorite}</li>
-                        </ul>
+                        <p>{favorite}</p>
                         <svg
                           className="w-6 h-6 text-gray-800 dark:text-white"
                           aria-hidden="true"
