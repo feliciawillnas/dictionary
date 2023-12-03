@@ -42,3 +42,10 @@ input:focus::placeholder {
   height: 1.2rem;
   color: #fff9f2;
 }
+
+.error-message {
+  flex: 1;
+  border-radius: 5px;
+  background-color: white;
+  width: fit-content;
+}

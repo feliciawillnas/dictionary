@@ -100,7 +100,6 @@ export default function SearchResults({ searchResults, onFavoritesResults }) {
                     {result.meanings.map((meaning, meaningIndex) => (
                       <div key={meaningIndex}>
                         <h3>{meaning.partOfSpeech}</h3>
-
                         <div
                           style={{
                             borderBottom: "2px solid #C8C8C8",
@@ -123,6 +122,28 @@ export default function SearchResults({ searchResults, onFavoritesResults }) {
                                 </ul>
                               </div>
                             )
+                          )}
+
+                          {meaning.synonyms.length === 0 ? (
+                            <p></p>
+                          ) : (
+                            <div className="synonyms-wrapper">
+                              {meaning.synonyms.length > 1 ? (
+                                <>
+                                  <h2 className="synonym-title">Synonyms:</h2>
+                                  <div className="synonyms-title-span">
+                                    <span>{meaning.synonyms.join(", ")}</span>
+                                  </div>
+                                </>
+                              ) : (
+                                <>
+                                  <h2 className="synonym-title">Synonym:</h2>{" "}
+                                  <div className="synonyms-title-span">
+                                    <span>{meaning.synonyms}</span>
+                                  </div>
+                                </>
+                              )}
+                            </div>
                           )}
                         </div>
                       </div>

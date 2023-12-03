@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import "../css/Search.css";
-
 function Search({ onSearchResults }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+  const [isErrorVisible, setIsErrorVisible] = useState(false);
+  const [errorStatus, setErrorStatus] = useState("");
 
   const handleSearch = () => {
     if (searchTerm === "") {
-      handleError();
+      handleError("Please enter a valid word");
     } else {
       handleInputChange();
       clearInput();
@@ -16,6 +17,7 @@ function Search({ onSearchResults }) {
 
   const clearInput = () => {
     setSearchTerm("");
+    setIsErrorVisible(false);
   };
 
   const handleInputChange = async () => {
@@ -23,17 +25,32 @@ function Search({ onSearchResults }) {
       const response = await fetch(
         `https://api.dictionaryapi.dev/api/v2/entries/en/${searchTerm}`
       );
-      const data = await response.json();
 
-      setSearchResults(data);
-      onSearchResults(data);
+      if (response.ok) {
+        const data = await response.json();
+        setSearchResults(data);
+        onSearchResults(data);
+      } else {
+        throw new Error("Something went wrong");
+      }
     } catch (error) {
-      console.error("Error fetching data:", error);
+      handleError(error);
     }
   };
 
-  const handleError = () => {
-    console.log("Error");
+  const handleError = (error) => {
+    if (error.message === "Something went wrong") {
+      setErrorStatus(
+        "Error fetching word definitions. Please try again later."
+      );
+    } else if (error.response && error.response.status === 404) {
+      setErrorStatus(`No definitions found for '${searchTerm}'.`);
+    } else {
+      setErrorStatus("An unexpected error occurred. Please try again later.");
+    }
+
+    setIsErrorVisible(true);
+    console.error("Error:", error.message);
   };
 
   return (
@@ -67,6 +84,9 @@ function Search({ onSearchResults }) {
           </svg>
         </button>
       </div>
+      {isErrorVisible && (
+        <div className="error-message">Please enter a valid word</div>
+      )}
     </>
   );
 }

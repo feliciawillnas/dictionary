@@ -80,3 +80,21 @@
   margin-left: 0.5rem;
   color: grey;
 }
+
+.synonyms-wrapper {
+  padding: 0.6rem;
+  background-color: rgb(225, 227, 236);
+  border-radius: 5px;
+}
+
+.synonyms-wrapper h2 {
+  margin-bottom: 0rem;
+}
+
+.synonym-title {
+  margin-right: 0.5rem;
+}
+.synonyms-title-span {
+  padding: 0.4rem 1rem 0rem 1rem;
+  color: #505050;
+}
