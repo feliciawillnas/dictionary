@@ -45,7 +45,11 @@ function Search({ onSearchResults }) {
           placeholder="Search"
           type="text"
         />
-        <button onClick={handleSearch} className="search-button">
+        <button
+          onClick={handleSearch}
+          className="search-button"
+          aria-label="search"
+        >
           <svg
             className="w-6 h-6 text-gray-800 dark:text-white svg-search"
             aria-hidden="true"
